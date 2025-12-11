@@ -144,7 +144,7 @@ export default function SobrePage() {
                     title:
                       "Especialização em Psicoterapia Baseada em Evidências",
                     subtitle:
-                      "InPBE - Instituto de Psicoterapia Baseada em Evidências",
+                      "InPBE - Instituto de Psicologia Baseada em Evidências",
                   },
                 ].map((item) => (
                   <li key={item.title} className="flex gap-3">
