@@ -15,8 +15,8 @@ export default function Home() {
             <p className="mb-8 text-lg text-primary-100">
               Fico contente pela sua decisão de procurar psicoterapia e investir
               em si mesmo(a). Essa decisão não é fácil mas é o{" "}
-              <strong>primeiro passo</strong>
-              para construir um jeito mais leve de viver!
+              <strong>primeiro passo</strong> para construir um jeito mais leve
+              de viver!
             </p>
             <div className="flex gap-4">
               <a
