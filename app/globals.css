@@ -76,3 +76,13 @@
 .image-custom-position-terapia {
   object-position: 50% 50% !important;
 }
+
+.image-sobre-mim {
+  object-position: 50% 50% !important;
+}
+
+@media (max-width: 1023px) {
+  .image-sobre-mim {
+    object-position: 50% 20% !important;
+  }
+}

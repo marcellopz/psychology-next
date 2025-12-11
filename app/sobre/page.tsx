@@ -1,13 +1,6 @@
 import Navbar from "@/components/Navbar";
 import PageHero from "@/components/PageHero";
-import {
-  Award,
-  BookOpen,
-  Briefcase,
-  Users,
-  Heart,
-  TrendingUp,
-} from "lucide-react";
+import { Award, BookOpen, Briefcase, Heart } from "lucide-react";
 import Image from "next/image";
 
 export default function SobrePage() {
@@ -19,20 +12,20 @@ export default function SobrePage() {
         description="Conheça minha trajetória profissional e meu compromisso com um atendimento psicológico sério, ético e baseado nas melhores evidências científicas."
       />
 
-      <section className="py-16 md:py-24">
+      <section className="py-8 md:py-12 lg:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="rounded-2xl bg-primary-50 overflow-hidden">
-              <div className="relative h-[500px] w-full md:h-full">
+          <div className="mb-16 grid grid-cols-1 gap-8 lg:grid-cols-5">
+            <div className="lg:col-span-2 rounded-2xl bg-primary-50 overflow-hidden">
+              <div className="relative h-[400px] w-full lg:h-[600px]">
                 <Image
                   src="/xib2.jpeg"
                   alt="Welligton Queiroz - Psicólogo Clínico"
                   fill
-                  className="rounded-2xl object-cover"
+                  className="rounded-2xl object-cover image-sobre-mim"
                 />
               </div>
             </div>
-            <div className="md:col-span-2">
+            <div className="lg:col-span-3">
               <h2 className="mb-6 text-3xl font-bold text-neutral-900">
                 Welligton Ribeiro Queiroz Júnior
               </h2>
@@ -47,6 +40,14 @@ export default function SobrePage() {
                   <strong>Núcleo de Psicologia Ampliada da UFES</strong>, onde
                   tive contato com uma ampla variedade de demandas emocionais e
                   sociais, consolidando minha base de atendimento individual.
+                </p>
+                <p>
+                  Atualmente, estou me especializando em{" "}
+                  <strong>Psicoterapia Baseada em Evidências</strong> pelo
+                  InPBE, buscando aprofundar meu domínio de intervenções que
+                  realmente funcionam e que respeitam tanto a ciência quanto a
+                  singularidade de cada pessoa. Hoje atendo{" "}
+                  <strong>online e presencialmente</strong> em Vitória-ES.
                 </p>
               </div>
             </div>
@@ -115,22 +116,6 @@ export default function SobrePage() {
             <p className="text-neutral-700 leading-relaxed">
               Essas experiências reforçam meu compromisso com uma prática
               fundamentada em pesquisa, ética e constante atualização.
-            </p>
-          </div>
-
-          {/* Bloco: Especialização Atual */}
-          <div className="mb-12">
-            <h3 className="mb-4 flex items-center gap-3 text-2xl font-bold text-neutral-900">
-              <TrendingUp className="h-8 w-8 text-secondary-600" />
-              Especialização Atual
-            </h3>
-            <p className="text-neutral-700 leading-relaxed">
-              Atualmente, estou me especializando em{" "}
-              <strong>Psicoterapia Baseada em Evidências</strong> pelo InPBE,
-              buscando aprofundar meu domínio de intervenções que realmente
-              funcionam e que respeitam tanto a ciência quanto a singularidade
-              de cada pessoa. Hoje atendo{" "}
-              <strong>online e presencialmente</strong> em Vitória-ES.
             </p>
           </div>
 
@@ -203,50 +188,6 @@ export default function SobrePage() {
                         {item.subtitle}
                       </div>
                     </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            <div>
-              <h3 className="mb-6 flex items-center gap-3 text-2xl font-bold text-neutral-900">
-                <BookOpen className="h-8 w-8 text-primary-600" />
-                Abordagens Terapêuticas
-              </h3>
-              <ul className="space-y-3 text-neutral-700">
-                {[
-                  "Terapia Cognitivo-Comportamental (TCC)",
-                  "Psicodrama",
-                  "Terapia Gestáltica",
-                  "Psicoterapia Humanista",
-                  "Terapia Breve Focada",
-                ].map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span className="text-primary-500">✓</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="mb-6 flex items-center gap-3 text-2xl font-bold text-neutral-900">
-                <Users className="h-8 w-8 text-secondary-600" />
-                Áreas de Especialidade
-              </h3>
-              <ul className="space-y-3 text-neutral-700">
-                {[
-                  "Transtornos de Ansiedade",
-                  "Depressão e Transtorno do Humor",
-                  "Relacionamentos e Comunicação",
-                  "Traumas e TEPT",
-                  "Desenvolvimento Pessoal",
-                ].map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span className="text-secondary-600">✓</span>
-                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
