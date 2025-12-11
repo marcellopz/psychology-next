@@ -1,15 +1,20 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-neutral-900 py-12 text-neutral-400">
+    <footer className="bg-neutral-900 pt-6 pb-10 text-neutral-400">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 text-center">
-          <div className="mb-2 text-xl font-bold text-white">
-            Welligton Queiroz
-          </div>
+        <div className="mb-8 text-center flex flex-col items-center">
+          <Image
+            src="/logo_vertical_completa_02.png"
+            alt="Welligton Queiroz"
+            width={180}
+            height={200}
+            className="mb-0.5 opacity-80"
+          />
           <div className="text-sm text-neutral-500">
             PSICÓLOGO CLÍNICO | CRP16/12189
           </div>

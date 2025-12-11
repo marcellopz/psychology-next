@@ -9,44 +9,78 @@ export default function SobrePage() {
       <Navbar />
       <PageHero
         title="Sobre Mim"
-        description="Conheça minha trajetória profissional e meu compromisso com a excelência no atendimento psicológico."
+        description="Conheça minha trajetória profissional e meu compromisso com um atendimento psicológico sério, ético e baseado nas melhores evidências científicas."
       />
 
       <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="rounded-2xl bg-primary-50">
-              <div className="relative h-[500px] w-full">
+            <div className="rounded-2xl bg-primary-50 overflow-hidden">
+              <div className="relative h-full w-full">
                 <Image
-                  src="https://images.unsplash.com/photo-1560807707-38cc192649c1?w=600&h=750&fit=crop"
+                  src="/xib2.jpeg"
                   alt="Welligton Queiroz - Psicólogo Clínico"
                   fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
                   className="rounded-2xl object-cover"
                 />
               </div>
             </div>
             <div className="md:col-span-2">
               <h2 className="mb-6 text-3xl font-bold text-neutral-900">
-                Welligton Queiroz
+                Welligton Ribeiro Queiroz Júnior
               </h2>
-              <p className="mb-4 text-neutral-700 leading-relaxed">
-                Sou psicólogo clínico com mais de 10 anos de experiência em
-                atendimento individual. Minha paixão é ajudar pessoas a
-                compreender suas emoções e transformar suas vidas através da
-                psicoterapia.
-              </p>
-              <p className="mb-4 text-neutral-700 leading-relaxed">
-                Trabalho com abordagens terapêuticas comprovadas,
-                particularmente Terapia Cognitivo-Comportamental (TCC) e
-                Psicodrama, adaptando os métodos às necessidades únicas de cada
-                paciente.
-              </p>
-              <p className="text-neutral-700 leading-relaxed">
-                Meu objetivo é criar um espaço seguro, acolhedor e livre de
-                julgamentos onde você possa explorar seus pensamentos,
-                sentimentos e comportamentos de forma autêntica.
-              </p>
+              <div className="space-y-4 text-neutral-700 leading-relaxed">
+                <p>
+                  Meu nome é <strong>Welligton Ribeiro Queiroz Júnior</strong>,
+                  sou psicólogo formado pela Universidade Federal do Espírito
+                  Santo (UFES) e desenvolvi minha prática clínica a partir de
+                  experiências diversas, sempre orientadas pelo cuidado
+                  qualificado e pelo rigor técnico. Durante minha graduação,
+                  atuei no Núcleo de Psicologia Ampliada da UFES, onde tive
+                  contato com uma ampla variedade de demandas emocionais e
+                  sociais, consolidando minha base de atendimento individual.
+                </p>
+                <p>
+                  Também integrei o <strong>Projeto Pode Falar</strong>,
+                  iniciativa da UNICEF em parceria com o Instituto Acalanto,
+                  voltada ao acolhimento de jovens entre 13 e 24 anos em
+                  sofrimento psíquico. Nesse contexto, realizei mais de{" "}
+                  <strong>400 atendimentos</strong>, lidando com demandas
+                  complexas como ansiedade, depressão, vivências de violência,
+                  conflitos familiares, autolesão, dificuldades escolares e
+                  impactos das redes sociais na saúde mental. O Pode Falar me
+                  ensinou a importância da escuta sensível, da comunicação clara
+                  e da capacidade de acolher crises emocionais com seriedade,
+                  responsabilidade e técnica.
+                </p>
+                <p>
+                  No campo acadêmico, fui monitor de disciplinas na UFES como
+                  História da Psicologia e Processos Psicológicos Básicos.
+                  Também tive a oportunidade de participar ativamente da
+                  produção científica na psicologia, tive a oportunidade de
+                  participar na criação e validação de instrumentos psicológicos
+                  relevantes na área, e apresentei trabalhos em congressos
+                  nacionais como a <strong>ABRAOPC</strong> (Associação
+                  Brasileira de Orientação Profissional e de Carreira) e o{" "}
+                  <strong>IBAP</strong> (Instituto Brasileiro de Avaliação
+                  Psicológica). Essas experiências reforçam meu compromisso com
+                  uma prática fundamentada em pesquisa, ética e constante
+                  atualização.
+                </p>
+                <p>
+                  Atualmente, estou me especializando em{" "}
+                  <strong>Psicoterapia Baseada em Evidências</strong> pelo
+                  InPBE, buscando aprofundar meu domínio de intervenções que
+                  realmente funcionam e que respeitam tanto a ciência quanto a
+                  singularidade de cada pessoa. Hoje atendo{" "}
+                  <strong>online e presencialmente</strong> em Vitória-ES.
+                </p>
+                <p>
+                  Meu compromisso é continuar me atualizando, estudando e
+                  ampliando minhas habilidades para oferecer um atendimento
+                  psicológico cada vez mais qualificado, humano e responsável.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -163,13 +197,6 @@ export default function SobrePage() {
           </div>
         </div>
       </section>
-
-      <footer className="bg-neutral-900 py-12 text-center text-neutral-400">
-        <p>
-          &copy; {new Date().getFullYear()} Welligton Queiroz. Todos os direitos
-          reservados.
-        </p>
-      </footer>
     </div>
   );
 }

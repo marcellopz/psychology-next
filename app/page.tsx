@@ -8,27 +8,35 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="relative bg-linear-to-br from-primary-500 to-primary-600 py-16 text-white md:py-24">
-        <div className="z-1 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <div>
+      <section className="relative overflow-hidden bg-linear-to-br from-primary-500 to-primary-600 py-16 text-white md:py-24">
+        <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+          <div className="relative z-10">
             <h1 className="mb-6 text-4xl font-bold md:text-5xl">Bem vindo!</h1>
             <p className="mb-8 text-lg text-primary-100">
               Fico contente pela sua decisão de procurar psicoterapia e investir
-              em si mesmo(a). Essa decisão não é fácil mas é o primeiro passo
+              em si mesmo(a). Essa decisão não é fácil mas é o{" "}
+              <strong>primeiro passo</strong>
               para construir um jeito mais leve de viver!
             </p>
             <div className="flex gap-4">
-              <Link
-                href="/sobre"
-                className="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-primary-600 transition-colors hover:bg-neutral-100"
+              <a
+                href="https://wa.me/5527995140965"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative z-20 cursor-pointer inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-primary-600 transition-colors hover:bg-neutral-100"
               >
-                Vamos lá?
-                <ArrowRight size={20} />
-              </Link>
+                <Image
+                  src="/whatsapp.svg"
+                  alt="WhatsApp"
+                  width={22}
+                  height={22}
+                />
+                <span style={{ lineHeight: "22px" }}>Vamos lá?</span>
+              </a>
             </div>
           </div>
 
-          <div className="z-1 overflow-hidden rounded-2xl border shadow-xl">
+          <div className="relative z-10 overflow-hidden rounded-2xl shadow-xl">
             <div className="relative h-96 w-full">
               <Image
                 src="/xib4.jpeg"
@@ -41,14 +49,14 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="absolute top-0 right-0 h-full w-full overflow-hidden">
+        <div className="absolute top-0 right-0 pointer-events-none z-0 overflow-visible">
           <Image
             src="/elemento%20gráfico_01.png"
             alt=""
             aria-hidden="true"
-            width={505}
-            height={98}
-            className="h-full w-full translate-x-1/3 object-contain"
+            width={800}
+            height={700}
+            className="translate-x-1/6 -translate-y-1/5 object-contain"
             priority
           />
         </div>
@@ -76,12 +84,13 @@ export default function Home() {
             </div>
             <div>
               <p className="text-lg text-neutral-600">
-                Meu nome é Welligton Queiroz, sou psicólogo formado pela
-                Universidade Federal do Espírito Santo, possuo vasta experiência
-                de atendimento pelo Núcleo de Psicologia Ampliada da UFES e pelo
-                Projeto Pode Falar da UNICEF através do Instituto Acalanto.
-                Atualmente me especializo em psicoterapia baseada em evidências
-                pelo InPBE e atendo online e presencialmente em Vitória-ES.
+                Meu nome é <strong>Welligton Queiroz</strong>, sou psicólogo
+                formado pela Universidade Federal do Espírito Santo, possuo
+                vasta experiência de atendimento pelo Núcleo de Psicologia
+                Ampliada da UFES e pelo Projeto Pode Falar da UNICEF através do
+                Instituto Acalanto. Atualmente me especializo em{" "}
+                <strong>psicoterapia baseada em evidências</strong> pelo InPBE e
+                atendo online e presencialmente em Vitória-ES.
               </p>
             </div>
           </div>
@@ -113,19 +122,19 @@ export default function Home() {
                 processo científico, estruturado em métodos e técnicas
                 reconhecidas pela ciência para o tratar de diferentes quadros.
                 Esse serviço pode ser útil tanto para psicopatologias como
-                Transtornos depressivos, Transtornos de Ansiedade ou
+                Transtornos depressivos, Transtornos de Ansiedade ou ou
                 dificuldades emocionais persistentes - quanto em questões do
                 desenvolvimento humano, como autoconhecimento, processos de
                 tomada de decisão e desenvolvimento de habilidades
                 socioemocionais.
               </p>
               <p className="text-lg text-neutral-600">
-                Minha proposta na terapia é oferecer um espaço seguro e
-                acolhedor para que possamos construir juntos um espaço para
-                compreender padrões de comportamento, emoções e formas de
-                enfrentamento que existem atualmente na sua vida. E, a partir
-                disso, construiremos alternativas mais alinhadas com o que você
-                deseja pra sua vida.
+                Minha proposta na terapia é oferecer um{" "}
+                <strong>espaço seguro e acolhedor</strong> para que possamos
+                construir juntos um espaço para compreender padrões de
+                comportamento, emoções e formas de enfrentamento que existem
+                atualmente na sua vida. E, a partir disso, construiremos
+                alternativas mais alinhadas com o que você deseja pra sua vida.
               </p>
             </div>
 
@@ -171,10 +180,19 @@ export default function Home() {
               Enviar email
             </a>
             <a
-              href="tel:+5511999999999"
-              className="rounded-lg bg-secondary-600 px-8 py-3 font-semibold text-white transition-colors hover:bg-secondary-700"
+              href="https://wa.me/5527995140965"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-secondary-600 px-8 py-3 font-semibold text-white transition-colors hover:bg-secondary-700"
             >
-              Ligar agora
+              <Image
+                src="/whatsapp.svg"
+                alt="WhatsApp"
+                width={20}
+                height={20}
+                className="brightness-0 invert"
+              />
+              Falar no WhatsApp
             </a>
           </div>
         </div>
