@@ -13,10 +13,10 @@ export default function SobrePage() {
       />
 
       <section className="py-8 md:py-12 lg:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-16 grid grid-cols-1 gap-8 lg:grid-cols-5">
-            <div className="lg:col-span-2 rounded-2xl bg-primary-50 overflow-hidden">
-              <div className="relative h-[400px] w-full lg:h-[600px]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+          <div className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-5">
+            <div className="md:col-span-2 rounded-2xl bg-primary-50 overflow-hidden">
+              <div className="relative h-[400px] w-full md:h-[600px]">
                 <Image
                   src="/xib2.jpeg"
                   alt="Welligton Queiroz - Psicólogo Clínico"
@@ -25,7 +25,7 @@ export default function SobrePage() {
                 />
               </div>
             </div>
-            <div className="lg:col-span-3">
+            <div className="md:col-span-3">
               <h2 className="mb-6 text-3xl font-bold text-neutral-900">
                 Welligton Ribeiro Queiroz Júnior
               </h2>
