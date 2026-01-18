@@ -1,6 +1,25 @@
 import Navbar from "@/components/Navbar";
 import PageHero from "@/components/PageHero";
 import FaqAccordion, { FaqItem } from "@/components/FaqAccordion";
+import type { Metadata } from "next";
+import StructuredData from "@/components/StructuredData";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://welligtonqueiroz.com.br";
+
+export const metadata: Metadata = {
+  title: "Perguntas Frequentes | Dúvidas sobre Psicoterapia",
+  description:
+    "Tire suas dúvidas sobre psicoterapia, agendamento, valores, confidencialidade e como funciona o atendimento psicológico. Respostas para perguntas frequentes.",
+  openGraph: {
+    title: "Perguntas Frequentes sobre Psicoterapia",
+    description:
+      "Respostas para dúvidas comuns sobre psicoterapia, agendamento, valores e confidencialidade.",
+    url: `${siteUrl}/perguntas`,
+  },
+  alternates: {
+    canonical: `${siteUrl}/perguntas`,
+  },
+};
 
 const faqs: FaqItem[] = [
   {
@@ -55,13 +74,32 @@ const faqs: FaqItem[] = [
   },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
 export default function PerguntasPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
+    <>
+      <StructuredData data={faqSchema} />
+      <div className="min-h-screen bg-white">
+        <Navbar />
       <PageHero
         title="Perguntas Frequentes"
         description="Respostas para dúvidas comuns sobre psicoterapia e meu atendimento."
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Perguntas Frequentes", href: "/perguntas" },
+        ]}
       />
 
       <section className="py-16 md:py-24">
@@ -151,6 +189,7 @@ export default function PerguntasPage() {
           reservados.
         </p>
       </footer>
-    </div>
+      </div>
+    </>
   );
 }

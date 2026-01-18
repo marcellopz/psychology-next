@@ -2,11 +2,130 @@ import Navbar from "@/components/Navbar";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+import StructuredData from "@/components/StructuredData";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://welligtonqueiroz.com.br";
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${siteUrl}#business`,
+  name: "Welligton Queiroz - Psicólogo Clínico",
+  image: `${siteUrl}/logo%20horizontal_01.png`,
+  url: siteUrl,
+  telephone: "+5527995140965",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Vitória",
+    addressRegion: "ES",
+    addressCountry: "BR",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "-20.3155",
+    longitude: "-40.3128",
+  },
+  priceRange: "$$",
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+    ],
+    opens: "08:00",
+    closes: "18:00",
+  },
+  sameAs: [
+    // Adicione links de redes sociais quando disponíveis
+  ],
+};
+
+const professionalServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Welligton Queiroz - Psicólogo Clínico",
+  description:
+    "Psicólogo clínico especializado em psicoterapia individual, avaliação psicológica e saúde mental. Atendimento online e presencial em Vitória-ES.",
+  provider: {
+    "@type": "Person",
+    name: "Welligton Ribeiro Queiroz Júnior",
+    jobTitle: "Psicólogo Clínico",
+    alumniOf: {
+      "@type": "EducationalOrganization",
+      name: "Universidade Federal do Espírito Santo",
+    },
+    hasCredential: {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "Licenciatura em Psicologia",
+    },
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Vitória",
+  },
+  serviceType: [
+    "Psicoterapia Individual",
+    "Avaliação Psicológica",
+    "Terapia Focada em Problemas",
+    "Acompanhamento de Crise",
+  ],
+  url: siteUrl,
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Welligton Queiroz - Psicólogo Clínico",
+  description:
+    "Consultório de psicologia clínica especializado em psicoterapia individual baseada em evidências, avaliação psicológica e saúde mental em Vitória-ES.",
+  url: siteUrl,
+  logo: `${siteUrl}/logo%20horizontal_01.png`,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Vitória",
+    addressRegion: "ES",
+    addressCountry: "BR",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+5527995140965",
+    contactType: "Atendimento",
+    areaServed: "BR",
+    availableLanguage: "pt-BR",
+  },
+  sameAs: [
+    // Adicione links de redes sociais quando disponíveis
+  ],
+};
+
+export const metadata: Metadata = {
+  title: "Psicólogo Clínico em Vitória-ES | Psicoterapia Online e Presencial",
+  description:
+    "Psicólogo clínico especializado em psicoterapia individual baseada em evidências. Atendimento online e presencial em Vitória-ES. Mais de 400 atendimentos realizados. Agende sua consulta.",
+  openGraph: {
+    title: "Welligton Queiroz | Psicólogo Clínico em Vitória-ES",
+    description:
+      "Psicólogo clínico especializado em psicoterapia individual, avaliação psicológica e saúde mental. Atendimento online e presencial.",
+    url: siteUrl,
+    images: [`${siteUrl}/xib4.jpeg`],
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
+};
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
+    <>
+      <StructuredData data={localBusinessSchema} />
+      <StructuredData data={professionalServiceSchema} />
+      <StructuredData data={organizationSchema} />
+      <div className="min-h-screen bg-white">
+        <Navbar />
 
       <section className="relative overflow-hidden bg-linear-to-br from-primary-500 to-primary-600 py-16 text-white md:py-24">
         <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
@@ -40,7 +159,8 @@ export default function Home() {
             <div className="relative h-96 w-full">
               <Image
                 src="/xib4.jpeg"
-                alt="Consultório psicológico - espaço acolhedor"
+                alt="Consultório psicológico acolhedor e profissional para sessões de terapia em Vitória-ES, com ambiente tranquilo e confortável"
+                title="Espaço terapêutico do consultório de Welligton Queiroz em Vitória"
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
                 className="object-cover"
@@ -75,7 +195,8 @@ export default function Home() {
               <div className="relative h-[450px] w-full">
                 <Image
                   src="/xib3.jpeg"
-                  alt="Welligton Queiroz - Psicólogo"
+                  alt="Welligton Queiroz - Psicólogo Clínico formado pela UFES, especialista em psicoterapia baseada em evidências em Vitória-ES"
+                  title="Welligton Queiroz - Psicólogo Clínico"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover image-custom-position-sobre-mim"
@@ -142,7 +263,8 @@ export default function Home() {
               <div className="relative h-[450px] w-full">
                 <Image
                   src="/xib6.png"
-                  alt="Espaço terapêutico"
+                  alt="Espaço terapêutico profissional para psicoterapia individual em Vitória-ES, ambiente seguro e acolhedor para sessões de terapia"
+                  title="Espaço terapêutico para psicoterapia"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover image-custom-position-terapia"
@@ -197,6 +319,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

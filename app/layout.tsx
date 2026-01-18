@@ -8,10 +8,81 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://welligtonqueiroz.com.br";
+
 export const metadata: Metadata = {
-  title: "Welligton Queiroz | Psicólogo Clínico",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Welligton Queiroz | Psicólogo Clínico em Vitória-ES",
+    template: "%s | Welligton Queiroz - Psicólogo Clínico",
+  },
   description:
-    "Consultório psicológico especializado em psicoterapia individual, avaliação psicológica e saúde mental em São Paulo.",
+    "Psicólogo clínico especializado em psicoterapia individual, avaliação psicológica e saúde mental. Atendimento online e presencial em Vitória-ES. Psicoterapia baseada em evidências.",
+  keywords: [
+    "psicólogo",
+    "psicólogo Vitória",
+    "psicólogo Espírito Santo",
+    "psicoterapia",
+    "terapia online",
+    "terapia presencial",
+    "avaliação psicológica",
+    "saúde mental",
+    "psicoterapia baseada em evidências",
+    "ansiedade",
+    "depressão",
+    "psicólogo clínico",
+  ],
+  authors: [{ name: "Welligton Queiroz" }],
+  creator: "Welligton Queiroz",
+  publisher: "Welligton Queiroz",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: siteUrl,
+    siteName: "Welligton Queiroz - Psicólogo Clínico",
+    title: "Welligton Queiroz | Psicólogo Clínico em Vitória-ES",
+    description:
+      "Psicólogo clínico especializado em psicoterapia individual, avaliação psicológica e saúde mental. Atendimento online e presencial em Vitória-ES.",
+    images: [
+      {
+        url: `${siteUrl}/logo%20horizontal_01.png`,
+        width: 1200,
+        height: 630,
+        alt: "Welligton Queiroz - Psicólogo Clínico",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Welligton Queiroz | Psicólogo Clínico em Vitória-ES",
+    description:
+      "Psicólogo clínico especializado em psicoterapia individual, avaliação psicológica e saúde mental.",
+    images: [`${siteUrl}/logo%20horizontal_01.png`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    // Adicione aqui códigos de verificação quando disponíveis
+    // google: "seu-codigo-google",
+    // yandex: "seu-codigo-yandex",
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
 };
 
 export default function RootLayout({
@@ -20,7 +91,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={`${inter.variable} font-sans antialiased`}>
         <div className="min-h-screen bg-background text-foreground">
           {children}

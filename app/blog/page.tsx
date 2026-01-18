@@ -2,6 +2,24 @@ import Navbar from "@/components/Navbar";
 import PageHero from "@/components/PageHero";
 import { ArrowRight, Calendar, User } from "lucide-react";
 import Image from "next/image";
+import type { Metadata } from "next";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://welligtonqueiroz.com.br";
+
+export const metadata: Metadata = {
+  title: "Blog | Artigos sobre Psicologia e Saúde Mental",
+  description:
+    "Artigos, reflexões e insights sobre psicologia, bem-estar mental, ansiedade, depressão e desenvolvimento pessoal. Conteúdo científico e acessível.",
+  openGraph: {
+    title: "Blog | Artigos sobre Psicologia e Saúde Mental",
+    description:
+      "Artigos sobre psicologia, bem-estar mental e desenvolvimento pessoal escritos por psicólogo clínico.",
+    url: `${siteUrl}/blog`,
+  },
+  alternates: {
+    canonical: `${siteUrl}/blog`,
+  },
+};
 
 const posts = [
   {
@@ -79,6 +97,10 @@ export default function BlogPage() {
       <PageHero
         title="Blog"
         description="Artigos, reflexões e insights sobre psicologia, bem-estar mental e desenvolvimento pessoal."
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Blog", href: "/blog" },
+        ]}
       />
 
       <section className="py-16 md:py-24">

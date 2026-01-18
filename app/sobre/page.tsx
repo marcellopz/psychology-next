@@ -2,14 +2,85 @@ import Navbar from "@/components/Navbar";
 import PageHero from "@/components/PageHero";
 import { Award, BookOpen, Briefcase, Heart } from "lucide-react";
 import Image from "next/image";
+import type { Metadata } from "next";
+import StructuredData from "@/components/StructuredData";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://welligtonqueiroz.com.br";
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Welligton Ribeiro Queiroz Júnior",
+  jobTitle: "Psicólogo Clínico",
+  description:
+    "Psicólogo formado pela UFES, especialista em Psicoterapia Baseada em Evidências. Mais de 400 atendimentos realizados.",
+  image: `${siteUrl}/xib2.jpeg`,
+  url: `${siteUrl}/sobre`,
+  alumniOf: {
+    "@type": "EducationalOrganization",
+    name: "Universidade Federal do Espírito Santo",
+    abbreviation: "UFES",
+  },
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "Bacharelado em Psicologia",
+      recognizedBy: {
+        "@type": "Organization",
+        name: "Universidade Federal do Espírito Santo",
+      },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "Especialização em Psicoterapia Baseada em Evidências",
+      recognizedBy: {
+        "@type": "Organization",
+        name: "InPBE - Instituto de Psicologia Baseada em Evidências",
+      },
+    },
+  ],
+  worksFor: {
+    "@type": "Organization",
+    name: "Consultório Particular",
+  },
+  knowsAbout: [
+    "Psicoterapia",
+    "Psicologia Clínica",
+    "Avaliação Psicológica",
+    "Saúde Mental",
+    "Psicoterapia Baseada em Evidências",
+  ],
+};
+
+export const metadata: Metadata = {
+  title: "Sobre Mim | Formação e Experiência Profissional",
+  description:
+    "Welligton Queiroz - Psicólogo formado pela UFES, especialista em Psicoterapia Baseada em Evidências. Mais de 400 atendimentos no Projeto Pode Falar da UNICEF. Conheça minha trajetória profissional.",
+  openGraph: {
+    title: "Sobre Welligton Queiroz | Psicólogo Clínico",
+    description:
+      "Psicólogo formado pela UFES, especialista em Psicoterapia Baseada em Evidências. Experiência em atendimento clínico e projetos sociais.",
+    url: `${siteUrl}/sobre`,
+    images: [`${siteUrl}/xib2.jpeg`],
+  },
+  alternates: {
+    canonical: `${siteUrl}/sobre`,
+  },
+};
 
 export default function SobrePage() {
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
+    <>
+      <StructuredData data={personSchema} />
+      <div className="min-h-screen bg-white">
+        <Navbar />
       <PageHero
         title="Sobre Mim"
         description="Conheça minha trajetória profissional e meu compromisso com um atendimento psicológico sério, ético e baseado nas melhores evidências científicas."
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Sobre", href: "/sobre" },
+        ]}
       />
 
       <section className="py-8 md:py-12 lg:py-16">
@@ -19,7 +90,8 @@ export default function SobrePage() {
               <div className="relative h-[400px] w-full md:h-[600px]">
                 <Image
                   src="/xib2.jpeg"
-                  alt="Welligton Queiroz - Psicólogo Clínico"
+                  alt="Welligton Queiroz - Psicólogo Clínico formado pela UFES, especialista em psicoterapia baseada em evidências atendendo em Vitória-ES"
+                  title="Welligton Queiroz - Psicólogo Clínico"
                   fill
                   className="rounded-2xl object-cover image-sobre-mim"
                 />
@@ -195,6 +267,7 @@ export default function SobrePage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

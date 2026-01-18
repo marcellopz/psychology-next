@@ -1,6 +1,24 @@
 import Navbar from "@/components/Navbar";
 import PageHero from "@/components/PageHero";
 import { Microscope, Target, Users, Zap } from "lucide-react";
+import type { Metadata } from "next";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://welligtonqueiroz.com.br";
+
+export const metadata: Metadata = {
+  title: "Serviços | Psicoterapia Individual e Avaliação Psicológica",
+  description:
+    "Oferecemos psicoterapia individual, terapia focada em problemas, avaliação psicológica e acompanhamento de crise. Atendimento online e presencial em Vitória-ES.",
+  openGraph: {
+    title: "Serviços de Psicoterapia | Welligton Queiroz",
+    description:
+      "Psicoterapia individual, avaliação psicológica e acompanhamento de crise. Atendimento personalizado e baseado em evidências científicas.",
+    url: `${siteUrl}/servicos`,
+  },
+  alternates: {
+    canonical: `${siteUrl}/servicos`,
+  },
+};
 
 const services = [
   {
@@ -60,6 +78,10 @@ export default function ServicosPage() {
       <PageHero
         title="Meus Serviços"
         description="Oferecemos uma variedade de serviços psicológicos adaptados às suas necessidades específicas."
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Serviços", href: "/servicos" },
+        ]}
       />
 
       <section className="py-16 md:py-24">

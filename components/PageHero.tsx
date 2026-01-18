@@ -1,17 +1,22 @@
+import Breadcrumbs, { BreadcrumbItem } from "./Breadcrumbs";
+
 type PageHeroProps = {
   title: string;
   description: string;
   eyebrow?: string;
+  breadcrumbs?: BreadcrumbItem[];
 };
 
 export default function PageHero({
   title,
   description,
   eyebrow,
+  breadcrumbs,
 }: PageHeroProps) {
   return (
     <section className="bg-linear-to-br from-primary-500 to-primary-600 py-8 text-white md:py-12 lg:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {breadcrumbs && <Breadcrumbs items={breadcrumbs} variant="light" />}
         {eyebrow && (
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
             {eyebrow}
