@@ -4,7 +4,7 @@ import FaqAccordion, { FaqItem } from "@/components/FaqAccordion";
 import type { Metadata } from "next";
 import StructuredData from "@/components/StructuredData";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://welligtonqueiroz.com.br";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.psiwelligtonqueiroz.com.br";
 
 export const metadata: Metadata = {
   title: "Perguntas Frequentes | Dúvidas sobre Psicoterapia",
@@ -21,21 +21,37 @@ export const metadata: Metadata = {
   },
 };
 
+const EMAIL = "welligton.queiroz@hotmail.com";
+const TELEFONE = "(27) 99514-0965";
+
 const faqs: FaqItem[] = [
   {
     question: "Como posso agendar minha primeira consulta?",
-    answer:
-      "Você pode entrar em contato por email (welligton@example.com) ou telefone ((11) 9999-9999). Farei o possível para agendar sua consulta em um horário conveniente.",
+    answer: (
+      <>
+        Você pode entrar em contato por email{" "}
+        <a
+          href={`mailto:${EMAIL}`}
+          className="font-semibold text-primary-600 underline decoration-primary-600/30 underline-offset-2 hover:decoration-primary-600"
+        >
+          {EMAIL}
+        </a>{" "}
+        ou telefone{" "}
+        <a
+          href="tel:+5527995140965"
+          className="whitespace-nowrap font-semibold text-primary-600 underline decoration-primary-600/30 underline-offset-2 hover:decoration-primary-600"
+        >
+          {TELEFONE}
+        </a>
+        . Farei o possível para agendar sua consulta em um horário conveniente.
+      </>
+    ),
+    answerForSchema: `Você pode entrar em contato por email (${EMAIL}) ou telefone (${TELEFONE}). Farei o possível para agendar sua consulta em um horário conveniente.`,
   },
   {
     question: "Qual é a duração de uma sessão?",
     answer:
       "As sessões têm duração de 50 minutos, tempo ideal para um trabalho profundo sem ser excessivamente longo.",
-  },
-  {
-    question: "Quanto custa uma sessão?",
-    answer:
-      "A primeira consulta custa R$ 150, sessões regulares R$ 120 e avaliações psicológicas completas R$ 400. Podemos conversar sobre flexibilidade de pagamento.",
   },
   {
     question: "Como é mantida a confidencialidade na psicoterapia?",
@@ -60,17 +76,12 @@ const faqs: FaqItem[] = [
   {
     question: "Vocês oferecem atendimento online ou apenas presencial?",
     answer:
-      "Atualmente realizo atendimentos presenciais em São Paulo. Podemos avaliar casos específicos para atendimento remoto.",
+      "Atualmente realizo atendimentos online e presenciais em Vitória-ES.",
   },
   {
     question: "Como saber se a psicoterapia está funcionando?",
     answer:
-      "Revisamos o progresso com frequência e você perceberá mudanças em como pensa, sente e age diante dos desafios.",
-  },
-  {
-    question: "E se não sentir conexão com o terapeuta?",
-    answer:
-      "A relação terapêutica é fundamental. Se achar que não estamos conectando, conversaremos sobre o tema ou indicarei outro profissional.",
+      "Realizaremos o monitoramento do progresso e a mensuração de resultados terapêuticos através de instrumentos psicológicos confiáveis. Através desses instrumentos saberemos se a terapia está funcionando ou se será necessário reavaliar estratégias terapêuticas. Importante dizer que todas as decisões clínicas serão tomadas baseadas nas melhores evidências científicas e nas preferências do paciente.",
   },
 ];
 
@@ -82,7 +93,10 @@ const faqSchema = {
     name: faq.question,
     acceptedAnswer: {
       "@type": "Answer",
-      text: faq.answer,
+      text:
+        typeof faq.answer === "string"
+          ? faq.answer
+          : faq.answerForSchema ?? "",
     },
   })),
 };
@@ -168,16 +182,10 @@ export default function PerguntasPage() {
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <a
-              href="mailto:welligton@example.com"
+              href="mailto:welligton.queiroz@hotmail.com"
               className="rounded-lg bg-white px-8 py-3 font-semibold text-secondary-600 transition-colors hover:bg-neutral-100"
             >
               Enviar email
-            </a>
-            <a
-              href="tel:+5511999999999"
-              className="rounded-lg bg-white/20 px-8 py-3 font-semibold text-white transition-colors hover:bg-white/30"
-            >
-              Ligar agora
             </a>
           </div>
         </div>

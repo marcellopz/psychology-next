@@ -33,10 +33,10 @@ Criar um arquivo `.env.local` na raiz do projeto com a URL do seu site.
 
 1. Na raiz do projeto, crie um arquivo chamado `.env.local`:
 ```env
-NEXT_PUBLIC_SITE_URL=https://welligtonqueiroz.com.br
+NEXT_PUBLIC_SITE_URL=https://www.psiwelligtonqueiroz.com.br
 ```
 
-2. **Substitua** `welligtonqueiroz.com.br` pelo seu domínio real.
+2. O domínio padrão do site é `www.psiwelligtonqueiroz.com.br`. Altere apenas se usar outro domínio.
 
 3. Reinicie o servidor de desenvolvimento após criar/alterar o arquivo.
 
@@ -81,12 +81,12 @@ verification: {
 
 #### Passo 5: Enviar Sitemap
 - No Google Search Console, vá em "Sitemaps"
-- Adicione: `https://seu-dominio.com.br/sitemap.xml`
+- Adicione: `https://www.psiwelligtonqueiroz.com.br/sitemap.xml`
 - Clique em "Enviar"
 - Aguarde o processamento (pode levar alguns dias)
 
 #### Passo 6: Verificar robots.txt
-- Acesse: `https://seu-dominio.com.br/robots.txt`
+- Acesse: `https://www.psiwelligtonqueiroz.com.br/robots.txt`
 - Deve mostrar as regras configuradas corretamente
 
 ---
@@ -226,9 +226,9 @@ const reviewSchema = {
 
 Após fazer o deploy do site, verifique:
 
-- [ ] Site está acessível: `https://seu-dominio.com.br`
-- [ ] Robots.txt funciona: `https://seu-dominio.com.br/robots.txt`
-- [ ] Sitemap funciona: `https://seu-dominio.com.br/sitemap.xml`
+- [ ] Site está acessível: `https://www.psiwelligtonqueiroz.com.br`
+- [ ] Robots.txt funciona: `https://www.psiwelligtonqueiroz.com.br/robots.txt`
+- [ ] Sitemap funciona: `https://www.psiwelligtonqueiroz.com.br/sitemap.xml`
 - [ ] Verificar metadata com ferramentas:
   - Google Rich Results Test: https://search.google.com/test/rich-results
   - Facebook Sharing Debugger: https://developers.facebook.com/tools/debug/

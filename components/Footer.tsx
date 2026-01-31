@@ -79,8 +79,32 @@ export default function Footer() {
           <div>
             <h4 className="mb-4 font-semibold text-white">Contato</h4>
             <ul className="space-y-2">
-              <li>Email: welligton@example.com</li>
-              <li>Telefone: (27) 99514-0965</li>
+              <li>
+                <a
+                  href="mailto:welligton.queiroz@hotmail.com"
+                  className="transition-colors hover:text-white"
+                >
+                  welligton.queiroz@hotmail.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/5527995140965"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-1 transition-colors hover:text-white"
+                  aria-label="WhatsApp (27) 99514-0965"
+                >
+                  <Image
+                    src="/whatsapp.svg"
+                    alt=""
+                    width={20}
+                    height={20}
+                    className="h-5 w-5 shrink-0 filter-[brightness(0)_invert(0.65)] group-hover:filter-[brightness(0)_invert(1)]"
+                  />
+                  (27) 99514-0965
+                </a>
+              </li>
               <li>Vitória, ES</li>
             </ul>
           </div>

@@ -1,18 +1,21 @@
 import Navbar from "@/components/Navbar";
 import PageHero from "@/components/PageHero";
-import { Microscope, Target, Users, Zap } from "lucide-react";
+import { Building2, Microscope, ShieldCheck, Users } from "lucide-react";
+import Image from "next/image";
 import type { Metadata } from "next";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://welligtonqueiroz.com.br";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.psiwelligtonqueiroz.com.br";
 
 export const metadata: Metadata = {
-  title: "Serviços | Psicoterapia Individual e Avaliação Psicológica",
+  title:
+    "Serviços | Psicoterapia Individual, Avaliação e Consultoria Empresarial",
   description:
-    "Oferecemos psicoterapia individual, terapia focada em problemas, avaliação psicológica e acompanhamento de crise. Atendimento online e presencial em Vitória-ES.",
+    "Psicoterapia individual, avaliação psicológica, gestão comportamental de empresas e gerenciamento de riscos psicossociais (NR1). Atendimento online e presencial em Vitória-ES.",
   openGraph: {
-    title: "Serviços de Psicoterapia | Welligton Queiroz",
+    title: "Serviços de Psicoterapia e Consultoria | Welligton Queiroz",
     description:
-      "Psicoterapia individual, avaliação psicológica e acompanhamento de crise. Atendimento personalizado e baseado em evidências científicas.",
+      "Psicoterapia individual, avaliação psicológica, gestão comportamental e riscos psicossociais para empresas. Atendimento personalizado e baseado em evidências científicas.",
     url: `${siteUrl}/servicos`,
   },
   alternates: {
@@ -34,18 +37,6 @@ const services = [
     ],
   },
   {
-    icon: Target,
-    title: "Terapia Focada em Problemas",
-    description:
-      "Abordagem breve e estruturada para problemas específicos com foco em resultados práticos.",
-    features: [
-      "Duração definida",
-      "Foco em objetivos claros",
-      "Técnicas comprovadas",
-      "Acompanhamento do progresso",
-    ],
-  },
-  {
     icon: Microscope,
     title: "Avaliação Psicológica",
     description:
@@ -58,15 +49,27 @@ const services = [
     ],
   },
   {
-    icon: Zap,
-    title: "Acompanhamento de Crise",
+    icon: Building2,
+    title: "Gestão Comportamental de Empresas",
     description:
-      "Suporte imediato em momentos de crise com flexibilidade para atendimentos emergenciais.",
+      "Aplicação da ciência do comportamento no contexto organizacional para alinhar objetivos da empresa ao bem-estar do colaborador.",
     features: [
-      "Disponibilidade de agendar rápido",
-      "Suporte em momentos críticos",
-      "Estratégias de coping",
-      "Continuidade do tratamento",
+      "Aplicação da ciência do comportamento no contexto organizacional",
+      "Uso de dados para orientar decisões",
+      "Alinhamento entre objetivos da empresa e bem-estar do colaborador",
+      "Foco em comportamentos observáveis e mensuráveis",
+    ],
+  },
+  {
+    icon: ShieldCheck,
+    title: "Gerenciamento de Riscos Psicossociais para Empresas (NR1)",
+    description:
+      "Mapeamento e implementação de gestão de riscos psicossociais no ambiente de trabalho, com medidas contra assédio, burnout e ansiedade.",
+    features: [
+      "Mapeamento e Implementação de Gestão de Riscos Psicossociais",
+      "Medidas eficazes contra assédio moral e psicológico no ambiente de trabalho",
+      "Gestão do Estresse e Prevenção da Síndrome de Burnout",
+      "Prevenção e Manejo da Ansiedade no Trabalho",
     ],
   },
 ];
@@ -84,7 +87,7 @@ export default function ServicosPage() {
         ]}
       />
 
-      <section className="py-16 md:py-24">
+      <section className="py-8 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-2">
             {services.map((service) => {
@@ -111,90 +114,6 @@ export default function ServicosPage() {
               );
             })}
           </div>
-
-          {/* <div className="mb-16 rounded-2xl bg-neutral-50 p-12">
-            <h2 className="mb-8 text-center text-3xl font-bold text-neutral-900">
-              Investimento em sua Saúde Mental
-            </h2>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              <div className="rounded-xl border border-neutral-200 bg-white p-8 text-center">
-                <h3 className="mb-2 text-xl font-bold text-neutral-900">
-                  Primeira Consulta
-                </h3>
-                <div className="mb-4 text-3xl font-bold text-primary-600">
-                  R$ 150
-                </div>
-                <p className="text-sm text-neutral-600">
-                  Avaliação inicial e discussão de objetivos terapêuticos.
-                </p>
-              </div>
-              <div className="rounded-xl border border-primary-200 bg-primary-50 p-8 text-center md:scale-105">
-                <h3 className="mb-2 text-xl font-bold text-neutral-900">
-                  Sessão Regular
-                </h3>
-                <div className="mb-4 text-3xl font-bold text-primary-600">
-                  R$ 120
-                </div>
-                <p className="mb-6 text-sm text-neutral-600">
-                  Sessões contínuas de 50 minutos.
-                </p>
-                <div className="rounded bg-primary-600 py-2 text-sm font-semibold text-white">
-                  Mais Popular
-                </div>
-              </div>
-              <div className="rounded-xl border border-neutral-200 bg-white p-8 text-center">
-                <h3 className="mb-2 text-xl font-bold text-neutral-900">
-                  Avaliação Psicológica
-                </h3>
-                <div className="mb-4 text-3xl font-bold text-secondary-600">
-                  R$ 400
-                </div>
-                <p className="text-sm text-neutral-600">
-                  Avaliação completa com relatório detalhado.
-                </p>
-              </div>
-            </div>
-          </div> */}
-
-          <div>
-            <h2 className="mb-12 text-center text-3xl font-bold text-neutral-900">
-              Como Funciona
-            </h2>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
-              {[
-                {
-                  step: 1,
-                  title: "Contato",
-                  description: "Entre em contato via email ou telefone.",
-                },
-                {
-                  step: 2,
-                  title: "Agendamento",
-                  description: "Defina a data e hora da primeira consulta.",
-                },
-                {
-                  step: 3,
-                  title: "Avaliação",
-                  description: "Discutimos seus objetivos e necessidades.",
-                },
-                {
-                  step: 4,
-                  title: "Tratamento",
-                  description: "Iniciamos o acompanhamento terapêutico.",
-                },
-              ].map((item) => (
-                <div key={item.step} className="text-center">
-                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-lg font-bold text-white">
-                    {item.step}
-                  </div>
-                  <h3 className="mb-2 font-bold text-neutral-900">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-neutral-600">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
@@ -206,18 +125,27 @@ export default function ServicosPage() {
           <p className="mb-8 text-lg text-secondary-100">
             Entre em contato comigo para agendar sua primeira sessão.
           </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+          <div className="flex flex-col justify-center gap-4 sm:flex-row sm:flex-wrap">
             <a
-              href="mailto:welligton@example.com"
+              href="mailto:welligton.queiroz@hotmail.com"
               className="rounded-lg bg-white px-8 py-3 font-semibold text-secondary-600 transition-colors hover:bg-neutral-100"
             >
               Enviar email
             </a>
             <a
-              href="tel:+5511999999999"
-              className="rounded-lg bg-white/20 px-8 py-3 font-semibold text-white transition-colors hover:bg-white/30"
+              href="https://wa.me/5527995140965"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#128C7E] px-8 py-3 font-semibold text-white transition-colors hover:bg-[#0D7A6F]"
             >
-              Ligar agora
+              <Image
+                src="/whatsapp.svg"
+                alt="WhatsApp"
+                width={20}
+                height={20}
+                className="brightness-0 invert"
+              />
+              Mandar mensagem
             </a>
           </div>
         </div>

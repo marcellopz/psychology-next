@@ -5,7 +5,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import StructuredData from "@/components/StructuredData";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://welligtonqueiroz.com.br";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.psiwelligtonqueiroz.com.br";
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -70,8 +70,8 @@ const professionalServiceSchema = {
   serviceType: [
     "Psicoterapia Individual",
     "Avaliação Psicológica",
-    "Terapia Focada em Problemas",
-    "Acompanhamento de Crise",
+    "Gestão Comportamental de Empresas",
+    "Gerenciamento de Riscos Psicossociais para Empresas (NR1)",
   ],
   url: siteUrl,
 };
@@ -93,6 +93,7 @@ const organizationSchema = {
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+5527995140965",
+    email: "welligton.queiroz@hotmail.com",
     contactType: "Atendimento",
     areaServed: "BR",
     availableLanguage: "pt-BR",
@@ -296,7 +297,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <a
-              href="mailto:welligton@example.com"
+              href="mailto:welligton.queiroz@hotmail.com"
               className="rounded-lg bg-white px-8 py-3 font-semibold text-primary-600 transition-colors hover:bg-neutral-100"
             >
               Enviar email

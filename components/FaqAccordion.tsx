@@ -5,7 +5,9 @@ import { useState } from "react";
 
 export type FaqItem = {
   question: string;
-  answer: string;
+  answer: string | React.ReactNode;
+  /** Plain text for JSON-LD schema when answer is ReactNode */
+  answerForSchema?: string;
 };
 
 type FaqAccordionProps = {
@@ -32,7 +34,7 @@ export default function FaqAccordion({ faqs }: FaqAccordionProps) {
             </span>
             <ChevronDown
               size={24}
-              className={`flex-shrink-0 text-primary-600 transition-transform ${
+              className={`shrink-0 text-primary-600 transition-transform ${
                 openIndex === index ? "rotate-180" : ""
               }`}
             />

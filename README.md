@@ -58,7 +58,7 @@ Consulte `GUIA-SEO.md` para mais detalhes sobre otimizações e próximos passos
 Crie um arquivo `.env.local` na raiz:
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://seu-dominio.com.br
+NEXT_PUBLIC_SITE_URL=https://www.psiwelligtonqueiroz.com.br
 ```
 
 ## 📄 Licença

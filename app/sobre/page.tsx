@@ -5,7 +5,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import StructuredData from "@/components/StructuredData";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://welligtonqueiroz.com.br";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.psiwelligtonqueiroz.com.br";
 
 const personSchema = {
   "@context": "https://schema.org",

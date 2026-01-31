@@ -13,7 +13,7 @@ type BreadcrumbsProps = {
 };
 
 export default function Breadcrumbs({ items, variant = "dark" }: BreadcrumbsProps) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://welligtonqueiroz.com.br";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.psiwelligtonqueiroz.com.br";
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
