@@ -1,5 +1,7 @@
 import Navbar from "@/components/Navbar";
-import { ArrowRight } from "lucide-react";
+import ContactSection from "@/components/ContactSection";
+import { posts } from "@/app/blog/posts";
+import { ArrowRight, Calendar } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -286,40 +288,74 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-primary-600 py-16 text-white md:py-24">
-        <div className="mx-auto max-w-4xl px-4 text-center">
-          <h2 className="mb-6 text-3xl font-bold md:text-4xl">
-            Pronto para começar seu caminho?
-          </h2>
-          <p className="mb-8 text-lg text-primary-100">
-            Entre em contato comigo para agendar sua primeira sessão. Estarei
-            feliz em ajudar você na sua jornada de autoconhecimento e bem-estar.
-          </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <a
-              href="mailto:welligton.queiroz@hotmail.com"
-              className="rounded-lg bg-white px-8 py-3 font-semibold text-primary-600 transition-colors hover:bg-neutral-100"
+      <section className="bg-neutral-50 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 text-center">
+            <h2 className="mb-6 text-3xl font-bold text-neutral-900 md:text-4xl">
+              Blog
+            </h2>
+            <p className="mx-auto max-w-4xl text-lg text-neutral-600">
+              Psicologia está em todos os temas. Visite a página de blog para
+              conhecer artigos e reflexões sobre saúde mental e bem-estar.
+            </p>
+          </div>
+          <div className="mb-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {posts.slice(0, 3).map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="flex flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm transition-shadow hover:shadow-md"
+              >
+                <div className="relative h-40 w-full">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-col p-5">
+                  <span
+                    className={`mb-2 inline-block w-fit rounded-full px-2.5 py-0.5 text-xs font-semibold ${
+                      post.category === "Ansiedade"
+                        ? "bg-orange-100 text-orange-700"
+                        : "bg-primary-100 text-primary-700"
+                    }`}
+                  >
+                    {post.category}
+                  </span>
+                  <h3 title={post.title} className="mb-2 line-clamp-2 text-base font-bold text-neutral-900">
+                    {post.title}
+                  </h3>
+                  <p className="mb-3 line-clamp-3 text-sm text-neutral-600">
+                    {post.excerpt}
+                  </p>
+                  <span className="mb-2 flex items-center gap-1.5 text-xs text-neutral-500">
+                    <Calendar size={14} />
+                    {post.date}
+                  </span>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary-600">
+                    Ler mais
+                    <ArrowRight size={14} />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 font-semibold text-primary-600 transition-colors hover:text-primary-700"
             >
-              Enviar email
-            </a>
-            <a
-              href="https://wa.me/5527995140965"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-secondary-600 px-8 py-3 font-semibold text-white transition-colors hover:bg-secondary-700"
-            >
-              <Image
-                src="/whatsapp.svg"
-                alt="WhatsApp"
-                width={20}
-                height={20}
-                className="brightness-0 invert"
-              />
-              Falar no WhatsApp
-            </a>
+              Ver todos os artigos
+              <ArrowRight size={20} />
+            </Link>
           </div>
         </div>
       </section>
+
+      <ContactSection />
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import PageHero from "@/components/PageHero";
 import FaqAccordion, { FaqItem } from "@/components/FaqAccordion";
+import ContactSection from "@/components/ContactSection";
 import type { Metadata } from "next";
 import StructuredData from "@/components/StructuredData";
 
@@ -171,25 +172,7 @@ export default function PerguntasPage() {
         </div>
       </section>
 
-      <section className="bg-secondary-600 py-16 text-white md:py-24">
-        <div className="mx-auto max-w-4xl px-4 text-center">
-          <h2 className="mb-6 text-3xl font-bold md:text-4xl">
-            Ainda tem dúvidas?
-          </h2>
-          <p className="mb-8 text-lg text-secondary-100">
-            Entre em contato diretamente. Ficarei feliz em responder suas
-            perguntas.
-          </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <a
-              href="mailto:welligton.queiroz@hotmail.com"
-              className="rounded-lg bg-white px-8 py-3 font-semibold text-secondary-600 transition-colors hover:bg-neutral-100"
-            >
-              Enviar email
-            </a>
-          </div>
-        </div>
-      </section>
+      <ContactSection />
 
       <footer className="bg-neutral-900 py-12 text-center text-neutral-400">
         <p>

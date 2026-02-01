@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import PageHero from "@/components/PageHero";
+import ContactSection from "@/components/ContactSection";
 import { Award, BookOpen, Briefcase, Heart } from "lucide-react";
 import Image from "next/image";
 import type { Metadata } from "next";
@@ -267,6 +268,8 @@ export default function SobrePage() {
           </div>
         </div>
       </section>
+
+      <ContactSection />
       </div>
     </>
   );

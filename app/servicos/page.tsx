@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import PageHero from "@/components/PageHero";
+import ContactSection from "@/components/ContactSection";
 import { Building2, Microscope, ShieldCheck, Users } from "lucide-react";
-import Image from "next/image";
 import type { Metadata } from "next";
 
 const siteUrl =
@@ -117,39 +117,7 @@ export default function ServicosPage() {
         </div>
       </section>
 
-      <section className="bg-secondary-600 py-16 text-white md:py-24">
-        <div className="mx-auto max-w-4xl px-4 text-center">
-          <h2 className="mb-6 text-3xl font-bold md:text-4xl">
-            Pronto para começar?
-          </h2>
-          <p className="mb-8 text-lg text-secondary-100">
-            Entre em contato comigo para agendar sua primeira sessão.
-          </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row sm:flex-wrap">
-            <a
-              href="mailto:welligton.queiroz@hotmail.com"
-              className="rounded-lg bg-white px-8 py-3 font-semibold text-secondary-600 transition-colors hover:bg-neutral-100"
-            >
-              Enviar email
-            </a>
-            <a
-              href="https://wa.me/5527995140965"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#128C7E] px-8 py-3 font-semibold text-white transition-colors hover:bg-[#0D7A6F]"
-            >
-              <Image
-                src="/whatsapp.svg"
-                alt="WhatsApp"
-                width={20}
-                height={20}
-                className="brightness-0 invert"
-              />
-              Mandar mensagem
-            </a>
-          </div>
-        </div>
-      </section>
+      <ContactSection />
 
       <footer className="bg-neutral-900 py-12 text-center text-neutral-400">
         <p>

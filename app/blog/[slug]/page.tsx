@@ -1,7 +1,8 @@
 import Navbar from "@/components/Navbar";
 import PageHero from "@/components/PageHero";
+import ContactSection from "@/components/ContactSection";
 import { posts, getPostBySlug } from "../posts";
-import { Calendar, User } from "lucide-react";
+import { ArrowRight, Calendar, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -42,6 +43,7 @@ export default async function BlogArticlePage({ params }: Props) {
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  const otherPosts = posts.filter((p) => p.slug !== slug);
   const paragraphs = post.content.trim().split(/\n\n+/);
 
   function renderWithBold(text: string) {
@@ -85,6 +87,10 @@ export default async function BlogArticlePage({ params }: Props) {
             </div>
           </div>
 
+          <h1 className="mb-6 text-3xl font-bold text-neutral-900 md:text-4xl">
+            {post.title}
+          </h1>
+
           <div className="mb-8 flex flex-wrap gap-4 text-sm text-neutral-600">
             <span
               className={`inline-flex items-center gap-2 rounded-full px-3 py-1 font-semibold ${
@@ -123,6 +129,58 @@ export default async function BlogArticlePage({ params }: Props) {
           </div>
         </div>
       </article>
+
+      {otherPosts.length > 0 && (
+        <section className="border-t border-neutral-200 bg-neutral-50 py-12 md:py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h2 className="mb-8 text-2xl font-bold text-neutral-900">
+              Leia também
+            </h2>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {otherPosts.map((other) => (
+                <Link
+                  key={other.slug}
+                  href={`/blog/${other.slug}`}
+                  className="flex flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm transition-shadow hover:shadow-md"
+                >
+                  <div className="relative h-40 w-full">
+                    <Image
+                      src={other.image}
+                      alt={other.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-col p-5">
+                    <span
+                      className={`mb-2 inline-block w-fit rounded-full px-2.5 py-0.5 text-xs font-semibold ${
+                        other.category === "Ansiedade"
+                          ? "bg-orange-100 text-orange-700"
+                          : "bg-primary-100 text-primary-700"
+                      }`}
+                    >
+                      {other.category}
+                    </span>
+                    <h3 className="mb-2 line-clamp-2 text-base font-bold text-neutral-900">
+                      {other.title}
+                    </h3>
+                    <p className="mb-3 line-clamp-2 text-sm text-neutral-600">
+                      {other.excerpt}
+                    </p>
+                    <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary-600">
+                      Ler mais
+                      <ArrowRight size={14} />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <ContactSection />
 
       <footer className="bg-neutral-900 py-12 text-center text-neutral-400">
         <p>

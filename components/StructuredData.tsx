@@ -1,5 +1,5 @@
 type StructuredDataProps = {
-  data: Record<string, any>;
+  data: Record<string, unknown>;
 };
 
 export default function StructuredData({ data }: StructuredDataProps) {
