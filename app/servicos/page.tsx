@@ -1,89 +1,56 @@
-import Navbar from "@/components/Navbar";
 import PageHero from "@/components/PageHero";
 import ContactSection from "@/components/ContactSection";
 import { Building2, Microscope, ShieldCheck, Users } from "lucide-react";
 import type { Metadata } from "next";
+import { getMessages, getT } from "@/lib/server-i18n";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.psiwelligtonqueiroz.com.br";
 
-export const metadata: Metadata = {
-  title:
-    "Serviços | Psicoterapia Individual, Avaliação e Consultoria Empresarial",
-  description:
-    "Psicoterapia individual, avaliação psicológica, gestão comportamental de empresas e gerenciamento de riscos psicossociais (NR1). Atendimento online e presencial em Vitória-ES.",
-  openGraph: {
-    title: "Serviços de Psicoterapia e Consultoria | Welligton Queiroz",
-    description:
-      "Psicoterapia individual, avaliação psicológica, gestão comportamental e riscos psicossociais para empresas. Atendimento personalizado e baseado em evidências científicas.",
-    url: `${siteUrl}/servicos`,
-  },
-  alternates: {
-    canonical: `${siteUrl}/servicos`,
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const messages = await getMessages();
+  const t = getT(messages, "services");
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    openGraph: {
+      title: t("metaOgTitle"),
+      description: t("metaOgDescription"),
+      url: `${siteUrl}/servicos`,
+    },
+    alternates: {
+      canonical: `${siteUrl}/servicos`,
+    },
+  };
+}
 
-const services = [
-  {
-    icon: Users,
-    title: "Psicoterapia Individual",
-    description:
-      "Sessões personalizadas de terapia focadas em seus objetivos e desafios pessoais.",
-    features: [
-      "Sessões de 50 minutos",
-      "Frequência semanal ou quinzenal",
-      "Abordagem personalizada",
-      "Flexibilidade de horários",
-    ],
-  },
-  {
-    icon: Microscope,
-    title: "Avaliação Psicológica",
-    description:
-      "Diagnóstico preciso através de testes e entrevistas clínicas para compreender suas dificuldades.",
-    features: [
-      "Testes padronizados",
-      "Avaliação estruturada",
-      "Relatório detalhado",
-      "Recomendações claras",
-    ],
-  },
-  {
-    icon: Building2,
-    title: "Gestão Comportamental de Empresas",
-    description:
-      "Aplicação da ciência do comportamento no contexto organizacional para alinhar objetivos da empresa ao bem-estar do colaborador.",
-    features: [
-      "Aplicação da ciência do comportamento no contexto organizacional",
-      "Uso de dados para orientar decisões",
-      "Alinhamento entre objetivos da empresa e bem-estar do colaborador",
-      "Foco em comportamentos observáveis e mensuráveis",
-    ],
-  },
-  {
-    icon: ShieldCheck,
-    title: "Gerenciamento de Riscos Psicossociais para Empresas (NR1)",
-    description:
-      "Mapeamento e implementação de gestão de riscos psicossociais no ambiente de trabalho, com medidas contra assédio, burnout e ansiedade.",
-    features: [
-      "Mapeamento e Implementação de Gestão de Riscos Psicossociais",
-      "Medidas eficazes contra assédio moral e psicológico no ambiente de trabalho",
-      "Gestão do Estresse e Prevenção da Síndrome de Burnout",
-      "Prevenção e Manejo da Ansiedade no Trabalho",
-    ],
-  },
-];
+const SERVICE_ICONS = [Users, Microscope, Building2, ShieldCheck];
 
-export default function ServicosPage() {
+export default async function ServicosPage() {
+  const messages = await getMessages();
+  const t = getT(messages, "services");
+
+  const services = [1, 2, 3, 4].map((n) => ({
+    icon: SERVICE_ICONS[n - 1],
+    title: t(`service${n}Title`),
+    description: t(`service${n}Description`),
+    features: [
+      t(`service${n}Feature1`),
+      t(`service${n}Feature2`),
+      t(`service${n}Feature3`),
+      t(`service${n}Feature4`),
+    ],
+    i18nPrefix: `services.service${n}`,
+  }));
+
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
       <PageHero
-        title="Meus Serviços"
-        description="Oferecemos uma variedade de serviços psicológicos adaptados às suas necessidades específicas."
+        title={t("heroTitle")}
+        description={t("heroDescription")}
         breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Serviços", href: "/servicos" },
+          { label: t("breadcrumbHome"), href: "/" },
+          { label: t("breadcrumbServices"), href: "/servicos" },
         ]}
       />
 
@@ -94,19 +61,29 @@ export default function ServicosPage() {
               const Icon = service.icon;
               return (
                 <div
-                  key={service.title}
+                  key={service.i18nPrefix}
                   className="rounded-2xl border border-neutral-200 bg-white p-8 transition-shadow hover:shadow-lg"
                 >
                   <Icon className="mb-4 h-12 w-12 text-primary-600" />
-                  <h3 className="mb-3 text-2xl font-bold text-neutral-900">
+                  <h3
+                    className="mb-3 text-2xl font-bold text-neutral-900"
+                    data-i18n={`${service.i18nPrefix}Title`}
+                  >
                     {service.title}
                   </h3>
-                  <p className="mb-6 text-neutral-700">{service.description}</p>
+                  <p
+                    className="mb-6 text-neutral-700"
+                    data-i18n={`${service.i18nPrefix}Description`}
+                  >
+                    {service.description}
+                  </p>
                   <ul className="space-y-2 text-neutral-600">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex gap-3">
+                    {service.features.map((feature, fi) => (
+                      <li key={fi} className="flex gap-3">
                         <span className="font-bold text-primary-600">✓</span>
-                        <span>{feature}</span>
+                        <span data-i18n={`${service.i18nPrefix}Feature${fi + 1}`}>
+                          {feature}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -118,13 +95,6 @@ export default function ServicosPage() {
       </section>
 
       <ContactSection />
-
-      <footer className="bg-neutral-900 py-12 text-center text-neutral-400">
-        <p>
-          &copy; {new Date().getFullYear()} Welligton Queiroz. Todos os direitos
-          reservados.
-        </p>
-      </footer>
     </div>
   );
 }

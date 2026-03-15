@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import PageHero from "@/components/PageHero";
 import ContactSection from "@/components/ContactSection";
 import { ArrowRight, Calendar, User } from "lucide-react";
@@ -6,35 +5,40 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { posts } from "./posts";
+import { getMessages, getT } from "@/lib/server-i18n";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.psiwelligtonqueiroz.com.br";
 
-export const metadata: Metadata = {
-  title: "Blog | Artigos sobre Psicologia e Saúde Mental",
-  description:
-    "Artigos, reflexões e insights sobre psicologia, bem-estar mental, ansiedade, depressão e desenvolvimento pessoal. Conteúdo científico e acessível.",
-  openGraph: {
-    title: "Blog | Artigos sobre Psicologia e Saúde Mental",
-    description:
-      "Artigos sobre psicologia, bem-estar mental e desenvolvimento pessoal escritos por psicólogo clínico.",
-    url: `${siteUrl}/blog`,
-  },
-  alternates: {
-    canonical: `${siteUrl}/blog`,
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const messages = await getMessages();
+  const t = getT(messages, "blog");
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    openGraph: {
+      title: t("metaOgTitle"),
+      description: t("metaOgDescription"),
+      url: `${siteUrl}/blog`,
+    },
+    alternates: {
+      canonical: `${siteUrl}/blog`,
+    },
+  };
+}
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const messages = await getMessages();
+  const t = getT(messages, "blog");
+
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
       <PageHero
-        title="Blog"
-        description="Artigos, reflexões e insights sobre psicologia, bem-estar mental e desenvolvimento pessoal."
+        title={t("heroTitle")}
+        description={t("heroDescription")}
         breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Blog", href: "/blog" },
+          { label: t("breadcrumbHome"), href: "/" },
+          { label: t("breadcrumbBlog"), href: "/blog" },
         ]}
       />
 
@@ -84,8 +88,9 @@ export default function BlogPage() {
                       <Link
                         href={`/blog/${post.slug}`}
                         className="inline-flex w-fit items-center gap-2 font-semibold text-primary-600 transition-colors hover:text-primary-700"
+                        data-i18n="blog.readMore"
                       >
-                        Ler mais
+                        {t("readMore")}
                         <ArrowRight size={20} />
                       </Link>
                     </div>
@@ -130,8 +135,9 @@ export default function BlogPage() {
                     <Link
                       href={`/blog/${post.slug}`}
                       className="inline-flex items-center gap-2 text-sm font-semibold text-primary-600 transition-colors hover:text-primary-700"
+                      data-i18n="blog.readMore"
                     >
-                      Ler mais
+                      {t("readMore")}
                       <ArrowRight size={16} />
                     </Link>
                   </div>
@@ -142,14 +148,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <ContactSection />
-
-      <footer className="bg-neutral-900 py-12 text-center text-neutral-400">
-        <p>
-          &copy; {new Date().getFullYear()} Welligton Queiroz. Todos os direitos
-          reservados.
-        </p>
-      </footer>
+      <ContactSection variant="blog" />
     </div>
   );
 }
